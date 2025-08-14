@@ -5,6 +5,8 @@ import com.springboot.quizesMongo.quizesMongo.services.CategoryService;
 import com.springboot.quizesMongo.quizesMongo.services.QuizService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +15,23 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/quizzes")
-@AllArgsConstructor
+@RefreshScope
 public class QuizController {
     private QuizService quizService;
     private CategoryService categoryService;
+
+    @Value("${config.value}")
+    private String value;
+
+    public QuizController(CategoryService categoryService, QuizService quizService) {
+        this.categoryService = categoryService;
+        this.quizService = quizService;
+    }
+
+    @GetMapping("/check")
+    public ResponseEntity<String> get(){
+        return new ResponseEntity<>(value,HttpStatus.OK);
+    }
 
     @PostMapping
     public ResponseEntity<QuizDto> createQuiz(@RequestBody QuizDto quizDto){

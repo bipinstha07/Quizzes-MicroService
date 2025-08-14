@@ -4,9 +4,24 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27018/users
+  profiles:
+    active: dev
+
+  config:
+    import: configserver:http://localhost:9094
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+
 
 server:
   port: 9092
+
+
+
 
 eureka:
   client:
@@ -14,4 +29,6 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+
 
