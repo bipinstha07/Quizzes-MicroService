@@ -34,7 +34,7 @@ public class SecurityConfig {
                         .pathMatchers(HttpMethod.PATCH).hasRole("ADMIN")
                         .anyExchange()
                         .authenticated())
-                .oauth2ResourceServer(config->config.jwt(Customizer.withDefaults()));
+                .oauth2ResourceServer(config->config.jwt(jwtSpec -> jwtSpec.jwtAuthenticationConverter(roleExtractor())));
 
         return http.build();
     }
