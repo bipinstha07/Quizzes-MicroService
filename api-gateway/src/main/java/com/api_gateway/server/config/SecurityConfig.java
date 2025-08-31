@@ -29,12 +29,13 @@ public class SecurityConfig {
                 .authorizeExchange(authorizeExchangeSpec -> authorizeExchangeSpec
 //                        .pathMatchers("/admin/**").hasRole("ADMIN")
 //                        .pathMatchers(HttpMethod.POST,"/category/**").hasAnyRole("ADMIN")
-                        .pathMatchers(HttpMethod.GET).hasRole("NORMAL")
-                        .pathMatchers(HttpMethod.POST).hasRole("ADMIN")
-                        .pathMatchers(HttpMethod.DELETE).hasRole("ADMIN")
-                        .pathMatchers(HttpMethod.PATCH).hasRole("ADMIN")
+//                        .pathMatchers(HttpMethod.GET).hasRole("NORMAL")
+//                        .pathMatchers(HttpMethod.POST).hasRole("ADMIN")
+//                        .pathMatchers(HttpMethod.DELETE).hasRole("ADMIN")
+//                        .pathMatchers(HttpMethod.PATCH).hasRole("ADMIN")
                         .anyExchange()
-                        .authenticated())
+                        .permitAll())
+//                        .authenticated())
                 .oauth2ResourceServer(config->config.jwt(jwtSpec -> jwtSpec.jwtAuthenticationConverter(roleExtractor())));
 
         return http.build();
