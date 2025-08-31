@@ -28,6 +28,7 @@ public class SecurityConfig {
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(authorizeExchangeSpec -> authorizeExchangeSpec
 //                        .pathMatchers("/admin/**").hasRole("ADMIN")
+//                        .pathMatchers(HttpMethod.POST,"/category/**").hasAnyRole("ADMIN")
                         .pathMatchers(HttpMethod.GET).hasRole("NORMAL")
                         .pathMatchers(HttpMethod.POST).hasRole("ADMIN")
                         .pathMatchers(HttpMethod.DELETE).hasRole("ADMIN")

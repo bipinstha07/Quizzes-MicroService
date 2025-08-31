@@ -12,7 +12,10 @@ public class GatewayConfig {
     public RouteLocator routeLocator(RouteLocatorBuilder builder){
         return builder.routes()
                 .route("category-service",route -> route.path("/category/**")
-                        .filters(f->f.rewritePath("/category/?(?<remaining>.*)","/${remaining}"))
+                        .filters(f->f.rewritePath("/category/?(?<remaining>.*)","/${remaining}")
+                                .circuitBreaker(c->c.setName("categoryCB").setFallbackUri("forward:/categoryServiceFallback"))
+
+                        )
                         .uri("lb://CATEGORY-SERVICE")
                 )
                 .route("quizzes",route->route.path("/quizzes/**")
