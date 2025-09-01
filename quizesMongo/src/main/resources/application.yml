@@ -15,12 +15,8 @@ spring:
     username: guest
     password: guest
 
-
-
 server:
   port: 9092
-
-
 
 
 eureka:
@@ -31,4 +27,14 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 
 
+#Resilience4j configuration
+#Defines the number of calls the CB should keep track of to calculate the failure percentage
+resilience4j:
+  circuitbreaker:
+    configs:
+      defaults:
+        sliding-window-size: 5
+        permitted-number-of-calls-in-half-open-state: 2
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10000
 

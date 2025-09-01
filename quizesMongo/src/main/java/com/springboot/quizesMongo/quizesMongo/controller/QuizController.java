@@ -3,8 +3,9 @@ package com.springboot.quizesMongo.quizesMongo.controller;
 import com.springboot.quizesMongo.quizesMongo.dto.QuizDto;
 import com.springboot.quizesMongo.quizesMongo.services.CategoryService;
 import com.springboot.quizesMongo.quizesMongo.services.QuizService;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,8 @@ public class QuizController {
     @Value("${config.value}")
     private String value;
 
+    private final Logger logger = LoggerFactory.getLogger(QuizController.class);
+
     public QuizController(CategoryService categoryService, QuizService quizService) {
         this.categoryService = categoryService;
         this.quizService = quizService;
@@ -39,10 +42,15 @@ public class QuizController {
         return new ResponseEntity<>(quizDto1, HttpStatus.CREATED);
     }
 
+
     @GetMapping("/getAll")
-    public ResponseEntity<List<QuizDto>> getAllQuiz(){
-        return new ResponseEntity<>(quizService.findAll(),HttpStatus.OK);
+
+    public ResponseEntity<List<QuizDto>> getAllQuiz() {
+         return new ResponseEntity<>(quizService.findAll(), HttpStatus.OK);
     }
+
+
+
 
     @DeleteMapping("/{quizId}")
     public void deletequiz(@PathVariable String quizId){

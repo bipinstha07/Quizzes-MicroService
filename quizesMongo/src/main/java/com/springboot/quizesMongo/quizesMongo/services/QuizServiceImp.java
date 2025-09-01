@@ -4,6 +4,7 @@ import com.springboot.quizesMongo.quizesMongo.collections.Quiz;
 import com.springboot.quizesMongo.quizesMongo.dto.CategoryDto;
 import com.springboot.quizesMongo.quizesMongo.dto.QuizDto;
 import com.springboot.quizesMongo.quizesMongo.respository.QuizMongoRepo;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -88,6 +89,8 @@ public class QuizServiceImp implements QuizService{
 
         return quizDto1;
     }
+
+
 
 
 //    Rest Template
