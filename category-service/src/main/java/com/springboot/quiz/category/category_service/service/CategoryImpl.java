@@ -30,20 +30,19 @@ public class CategoryImpl implements CategoryInter{
     }
 
     @Override
-    public CategoryDto update(String categoryId,CategoryDto categoryDto) {
-
+    public CategoryDto update(String categoryId, CategoryDto categoryDto) {
         Category category = categoryRepo.findById(categoryId);
-
-        if(category == null){
+        if (category == null) {
             throw new RuntimeException("No Category Found");
         }
 
         category.setActive(categoryDto.isActive());
         category.setDescription(categoryDto.getDescription());
         category.setTitle(categoryDto.getTitle());
-        Category savedCategory = categoryRepo.save(category);
-        return modelMapper.map(savedCategory,CategoryDto.class);
+
+        return modelMapper.map(categoryRepo.save(category), CategoryDto.class);
     }
+
 
     @Override
     public CategoryDto getOne(String categoryId) {
