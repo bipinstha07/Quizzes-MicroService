@@ -14,10 +14,13 @@ spring:
     port: 5672
     username: guest
     password: guest
+  cloud:
+    function:
+      web:
+        path: "/function"
 
 server:
   port: 9092
-
 
 eureka:
   client:
