@@ -1,4 +1,4 @@
-package com.springboot.question.services;
+package com.springboot.quizesMongo.services;
 
 import org.springframework.cloud.openfeign.FeignClient;
 

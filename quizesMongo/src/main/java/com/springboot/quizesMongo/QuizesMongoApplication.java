@@ -1,6 +1,6 @@
-package com.springboot.question;
+package com.springboot.quizesMongo;
 
-import com.springboot.question.respository.QuizMongoRepo;
+import com.springboot.quizesMongo.respository.QuizMongoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

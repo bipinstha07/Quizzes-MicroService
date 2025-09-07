@@ -1,6 +1,6 @@
-package com.springboot.question.services;
+package com.springboot.quizesMongo.services;
 
-import com.springboot.question.dto.CategoryDto;
+import com.springboot.quizesMongo.dto.CategoryDto;
 
 import java.util.List;
 

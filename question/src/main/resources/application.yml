@@ -17,6 +17,14 @@ spring:
     function:
       web:
         path: "/function"
+      definition: getQuizBinding
+    stream:
+      bindings:
+        getQuizBinding-in-0:
+          destination: quiz-created
+          group: ${spring.application.name}
+
+
 
 server:
   port: 9095

@@ -3,16 +3,14 @@ package com.springboot.question.functions;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.function.Supplier;
+import java.util.function.Consumer;
 
 @Configuration
-public class Functions {
+public class QuizService {
 
     @Bean
-    public Supplier<String> getInformation(){
-        return ()->"Hello world";
+    public Consumer<QuizDto> getQuizBinding(){
+        return quizDto -> System.out.println(quizDto.getTitle());
     }
-
-
 
 }

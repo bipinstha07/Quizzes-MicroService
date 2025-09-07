@@ -1,18 +1,15 @@
-package com.springboot.question.collections;
+package com.springboot.question.functions;
+
 
 import lombok.*;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document(collection = "quizzes")
-public class Quiz {
+public class QuizDto {
 
-    @Id
     private String id;
     private String title;
     private String description;
@@ -24,5 +21,5 @@ public class Quiz {
     private Boolean live;
     private Integer passingMarks;
     private String categoryId;
-
+    private CategoryDto categoryDto;
 }

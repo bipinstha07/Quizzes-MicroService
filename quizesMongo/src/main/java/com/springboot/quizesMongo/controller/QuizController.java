@@ -1,8 +1,8 @@
-package com.springboot.question.controller;
+package com.springboot.quizesMongo.controller;
 
-import com.springboot.question.dto.QuizDto;
-import com.springboot.question.services.CategoryService;
-import com.springboot.question.services.QuizService;
+import com.springboot.quizesMongo.dto.QuizDto;
+import com.springboot.quizesMongo.services.CategoryService;
+import com.springboot.quizesMongo.services.QuizService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

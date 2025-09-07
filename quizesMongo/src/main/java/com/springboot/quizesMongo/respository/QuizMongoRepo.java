@@ -1,6 +1,6 @@
-package com.springboot.question.respository;
+package com.springboot.quizesMongo.respository;
 
-import com.springboot.question.collections.Quiz;
+import com.springboot.quizesMongo.collections.Quiz;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;

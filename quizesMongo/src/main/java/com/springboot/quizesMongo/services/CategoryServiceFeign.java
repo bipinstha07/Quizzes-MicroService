@@ -1,6 +1,6 @@
-package com.springboot.question.services;
+package com.springboot.quizesMongo.services;
 
-import com.springboot.question.dto.CategoryDto;
+import com.springboot.quizesMongo.dto.CategoryDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

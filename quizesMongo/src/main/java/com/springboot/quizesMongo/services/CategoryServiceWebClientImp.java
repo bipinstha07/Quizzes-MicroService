@@ -1,6 +1,6 @@
-package com.springboot.question.services;
+package com.springboot.quizesMongo.services;
 
-import com.springboot.question.dto.CategoryDto;
+import com.springboot.quizesMongo.dto.CategoryDto;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;

@@ -1,4 +1,4 @@
-package com.springboot.question.dto;
+package com.springboot.question.functions;
 
 
 import lombok.*;

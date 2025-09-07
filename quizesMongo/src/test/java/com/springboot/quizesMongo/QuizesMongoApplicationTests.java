@@ -1,7 +1,7 @@
-package com.springboot.question;
+package com.springboot.quizesMongo;
 
-import com.springboot.question.dto.CategoryDto;
-import com.springboot.question.services.CategoryServiceFeign;
+import com.springboot.quizesMongo.dto.CategoryDto;
+import com.springboot.quizesMongo.services.CategoryServiceFeign;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

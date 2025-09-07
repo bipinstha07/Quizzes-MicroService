@@ -1,13 +1,14 @@
-package com.springboot.question.services;
+package com.springboot.quizesMongo.services;
 
-import com.springboot.question.collections.Quiz;
-import com.springboot.question.dto.CategoryDto;
-import com.springboot.question.dto.QuizDto;
-import com.springboot.question.respository.QuizMongoRepo;
+import com.springboot.quizesMongo.collections.Quiz;
+import com.springboot.quizesMongo.dto.CategoryDto;
+import com.springboot.quizesMongo.dto.QuizDto;
+import com.springboot.quizesMongo.respository.QuizMongoRepo;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -24,6 +25,7 @@ public class QuizServiceImp implements QuizService{
     private RestTemplate restTemplate;
     private  CategoryService categoryService;
     private CategoryServiceFeign categoryServiceFeign;
+    private StreamBridge streamBridge;
 
 //    Rest Template
     @Override
@@ -38,7 +40,20 @@ public class QuizServiceImp implements QuizService{
         Quiz savedQuiz = quizMongoRepo.save(quiz);
         QuizDto savedQuizDto = modelMapper.map(savedQuiz,QuizDto.class);
         savedQuizDto.setCategoryDto(categoryDto);
+
+        publishQuizCreatedEvent(quizDto);
+
         return savedQuizDto;
+    }
+
+//    Publish Event to rabbitmq
+    private void publishQuizCreatedEvent(QuizDto quizDto) {
+        logger.info("Quiz Created to be publish");
+        var success = this.streamBridge.send("quizCreatedBinding-out-0",quizDto);
+        if(success)
+            logger.info("Event Published Successfully");
+        else
+            logger.info("Event Published failed");
 
     }
 

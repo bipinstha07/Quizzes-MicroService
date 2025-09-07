@@ -8,7 +8,7 @@ spring:
     active: dev
 
   config:
-    import: configserver:http://localhost:909.4
+    import: configserver:http://localhost:9094
   rabbitmq:
     host: localhost
     port: 5672
@@ -18,6 +18,12 @@ spring:
     function:
       web:
         path: "/function"
+    stream:
+      bindings:
+        quizCreatedBinding-out-0:
+          destination: quiz-created
+          group: ${spring.application.name}
+
 
 server:
   port: 9092

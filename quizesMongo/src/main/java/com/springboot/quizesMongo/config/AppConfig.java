@@ -1,4 +1,4 @@
-package com.springboot.question.config;
+package com.springboot.quizesMongo.config;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
