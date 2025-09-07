@@ -8,7 +8,7 @@ spring:
     active: dev
 
   config:
-    import: configserver:http://localhost:9094
+    import: configserver:http://localhost:909.4
   rabbitmq:
     host: localhost
     port: 5672
