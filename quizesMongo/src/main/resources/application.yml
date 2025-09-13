@@ -9,11 +9,11 @@ spring:
 
   config:
     import: configserver:http://localhost:9094
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
   cloud:
     function:
       web:
@@ -27,10 +27,15 @@ spring:
         acknowledged-in-0:
           destination: quiz-acknowledged
           group: ${spring.application.name}
-
+      kafka:
+        binder:
+          brokers: localhost:9092
+      binders:
+        kafkaBinder:
+          type: kafka
 
 server:
-  port: 9092
+  port: 9098
 
 eureka:
   client:

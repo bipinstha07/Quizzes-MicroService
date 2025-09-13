@@ -8,17 +8,18 @@ spring:
 
   config:
     import: configserver:http://localhost:9094
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
   cloud:
     function:
       web:
         path: "/function"
       definition: getQuizBinding
     stream:
+
       bindings:
         getQuizBinding-in-0:
           destination: quiz-created
@@ -26,8 +27,12 @@ spring:
         getQuizBinding-out-0:
           destination: quiz-acknowledged
           group: ${spring.application.name}
-
-
+      kafka:
+        binder:
+          brokers: localhost:9092
+      binders:
+        kafkaBinder:
+          type: kafka
 
 
 
