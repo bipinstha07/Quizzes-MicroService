@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trainsystem
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trainsystem
+  template:
+    metadata:
+      labels:
+        app: trainsystem
+    spec:
+      containers:
+      - name: trainsystem
+        image: bipinstha07/trainsystem:v1
+        ports:
+        - containerPort: 8080
